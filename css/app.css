@@ -37,6 +37,7 @@ body {
   overflow: auto;
   padding: 10px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .right {
@@ -51,6 +52,7 @@ body {
   overflow: auto;
   padding: 10px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .paragraph[color="error"] {
