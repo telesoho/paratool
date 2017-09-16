@@ -17,12 +17,12 @@ body {
   min-height: 50px;
 }
 
-.main {
+.app {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
-  height: 100%;
+  height: 98%;
 }
 
 .left {
@@ -33,7 +33,7 @@ body {
   align-content: flex-start;
   flex: auto;
   border: 1px solid gray;
-  height: 96vh;
+  height: 90vh;
   overflow: auto;
   padding: 10px;
   overflow-x: hidden;
@@ -51,7 +51,7 @@ body {
   align-content: flex-start;
   flex: auto;
   border: 1px solid gray;
-  height: 96vh;
+  height: 90vh;
   overflow: auto;
   padding: 10px;
   overflow-x: hidden;
