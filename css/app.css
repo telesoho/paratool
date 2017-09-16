@@ -17,48 +17,37 @@ body {
   min-height: 50px;
 }
 
-.app {
+.main {
+  margin-top:35px;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
-  height: 98%;
 }
 
 .left {
   width: 50%;
-  -webkit-flex: auto;
-  -webkit-align-content: flex-start;
-  /*--- safari（PC）用 ---*/
-  align-content: flex-start;
-  flex: auto;
-  border: 1px solid gray;
+  border-right: 1px solid gray;
   height: 90vh;
-  overflow: auto;
-  padding: 10px;
+  overflow: hidden;
+  padding: 1px 1px 15px 15px;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;  
-  z-index: 10;  
+  scroll-behavior: smooth; 
 }
+
 
 .right {
   width: 50%;
-  -webkit-flex: auto;
-  -webkit-align-content: flex-start;
-  /*--- safari（PC）用 ---*/
-  align-content: flex-start;
-  flex: auto;
-  border: 1px solid gray;
   height: 90vh;
-  overflow: auto;
-  padding: 10px;
+  overflow: hidden;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;  
-  z-index: 99;
+  padding: 1px 1px 15px 15px;
+  scroll-behavior: smooth;  
+}
+
+.dragArea::after {
+  content: "\A";
+  white-space: pre;
 }
 
 .paragraph[color="error"] {
@@ -66,7 +55,7 @@ body {
 }
 
 .paragraph {
-  padding: 5px 0px 5px 5px;
+  padding: 3px 3px 3px 3px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   width: 95%;
@@ -75,22 +64,28 @@ body {
   flex: 1 1 auto;
   cursor: move;
   background-color: #E7F909;
-  margin: 15px 0px 15px 0px;
-  /* and that, will result in a 10px gap */
-  z-index: 9999;
+  margin: 0px 0px 15px 0px;
 }
 
 .row {
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height: 32px;
   vertical-align: middle;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
+  background-color: red;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .button {
   width: 100px;
-  height: 95%;
+  height: 25px;
+  margin-top: 2px;
   margin-left: 20px;
   text-align: center;
   z-index: 999;
@@ -101,7 +96,9 @@ body {
 
 .inputbox {
   margin-left: 5px;
-  width:20%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width:200px;
   color: lightgrey;
   -moz-appearance: textfield;
   -webkit-appearance: textfield;
@@ -111,7 +108,6 @@ body {
   box-shadow: 1px 1px 1px 0 lightgray inset;  
   font: -moz-field;
   font: -webkit-small-control;
-  margin-top: 5px;
   padding: 2px 3px;   
   z-index: 999;
 }
@@ -131,7 +127,8 @@ body {
 
 #background {
   position: absolute;
-  z-index: 0;
+  top: 10px;
+  z-index: -1;
   display: block;
   min-height: 50%;
   min-width: 48%;

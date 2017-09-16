@@ -7,10 +7,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
 
   <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.js"></script> -->
 
   <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js"></script> -->
   <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
@@ -29,28 +29,36 @@
       <div class="button" v-on:click="confuse">扰乱</div>
     </div>
     <div class="main unselectable">
-      <div class="left" contenteditable='false' @contextmenu.prevent="$refs.ctx.open($event)">
+      <div class="left" contenteditable='false'>
+        <draggable style="position:relative" v-model="list" class="dragArea" 
+        :options="{group:'paragraph', delay: 200, scroll: false,}"
+          @start="onStart1" @end="onEnd1" @add="onAdd1" @remove="onRemove1">
+          <div class="paragraph" v-for="element in list">{{element.text}}</div>
+        </draggable>
+
         <div id="background" contenteditable='false'>
           <p id="bg-text">PASTE</p>
         </div>
-        <draggable style="position:relative" v-model="list" class="dragArea" :options="{group:'people'}">
-          <div class="paragraph" v-for="element in list">{{element.text}}</div>
-        </draggable>
       </div>
       <div class="right" id='rightDiv'>
+        <draggable style="position:relative" v-model="resultList" class="dragArea" 
+          :options="{group:'paragraph', delay: 200, scroll: false,}"
+          @start="onStart2" @end="onEnd2" @change="onChange2">
+          <div class='paragraph' v-bind:color=element.color v-for="element in resultList">{{element.text}}</div>
+        </draggable>
         <div id="background">
           <p id="bg-text">DROP</p>
         </div>
-        <draggable style="position:relative" v-model="resultList" class="dragArea" :options="{group:'people'}" @change="onChange">
-          <div class='paragraph' v-bind:color=element.color v-for="element in resultList">{{element.text}}</div>
-        </draggable>
       </div>
     </div>
   </div>
 </body>
 
-<script src="js/inobounce.js"></script>
-<script src="js/context-menu.js"></script>
+<script src="js/sortable.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/vuedraggable.js"></script>
+<!-- <script src="js/inobounce.js"></script> -->
+<!-- <script src="js/context-menu.js"></script> -->
 <script src="js/app.js"></script>
 
 </html>
