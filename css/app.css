@@ -74,6 +74,13 @@ body {
   z-index: 2;
 }
 
+.inputbox {
+  display: block;
+  left:0px; top:0px; width:100%;
+  color: lightgrey;
+  z-index: 999;
+}
+
 [draggable] {
   -moz-user-select: none;
   -khtml-user-select: none;

@@ -22,8 +22,9 @@
       <li class="ctx-item" @click="order()">Order</li>
       <li class="ctx-item" @click="confuse()">Confuse</li>
     </context-menu>
-    <div class="main unselectable" v-on:paste="onPaste">
-      <div class="left" contenteditable='true' @contextmenu.prevent="$refs.ctx.open($event)">
+    <div class="inputbox" contenteditable='true' v-on:paste="onPaste">将文章粘贴到此...</div>
+    <div class="main unselectable">
+      <div class="left" contenteditable='false' @contextmenu.prevent="$refs.ctx.open($event)">
         <div id="background" contenteditable='false'>
           <p id="bg-text">PASTE</p>
         </div>
@@ -31,8 +32,8 @@
           <div class="paragraph" v-for="element in list">{{element.text}}</div>
         </draggable>
       </div>
-      <div class="right" id='rightDiv' contenteditable='false'>
-        <div id="background" contenteditable='false'>
+      <div class="right" id='rightDiv'>
+        <div id="background">
           <p id="bg-text">DROP</p>
         </div>
         <draggable style="position:relative" v-model="resultList" class="dragArea" :options="{group:'people'}" @change="onChange">
