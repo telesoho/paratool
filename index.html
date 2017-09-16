@@ -24,9 +24,9 @@
     </context-menu> -->
     <div class="row">
       <div class="inputbox" contenteditable='true' v-on:paste="onPaste">将文章粘贴到此...</div>
-      <button class="button" v-on:click="cleanAll">清除</button>
-      <button class="button" v-on:click="order">排序</button>
-      <button class="button" v-on:click="confuse">扰乱</button>
+      <div class="button" v-on:click="cleanAll">清除</div>
+      <div class="button" v-on:click="order">排序</div>
+      <div class="button" v-on:click="confuse">扰乱</div>
     </div>
     <div class="main unselectable">
       <div class="left" contenteditable='false' @contextmenu.prevent="$refs.ctx.open($event)">

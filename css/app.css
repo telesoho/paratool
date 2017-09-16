@@ -14,7 +14,7 @@ body {
 }
 
 .dragArea {
-  min-height: 20px;
+  min-height: 50px;
 }
 
 .main {
@@ -36,9 +36,7 @@ body {
   height: 96vh;
   overflow: auto;
   padding: 10px;
-  /* this */
   overflow-x: hidden;
-  overflow-y:scroll;
 }
 
 .right {
@@ -52,9 +50,7 @@ body {
   height: 96vh;
   overflow: auto;
   padding: 10px;
-  /* this */
   overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 .paragraph[color="error"] {
@@ -65,18 +61,19 @@ body {
   padding: 5px 0px 5px 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
-  width: 100%;
+  width: 95%;
   white-space: pre-wrap;
   -webkit-flex: auto;
   flex: 1 1 auto;
   cursor: move;
   background-color: #E7F909;
-  margin: 10px 0px 10px 0px;
+  margin: 15px 0px 15px 0px;
   /* and that, will result in a 10px gap */
   z-index: 2;
 }
 
 .row {
+  vertical-align: middle;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
@@ -85,8 +82,13 @@ body {
 
 .button {
   width: 100px;
+  height: 95%;
   margin-left: 20px;
+  text-align: center;
   z-index: 999;
+  background-color: #E7F909;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;  
 }
 
 .inputbox {
