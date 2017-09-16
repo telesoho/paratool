@@ -58,7 +58,7 @@ body {
   scroll-behavior: smooth;
   overflow-y: scroll; /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch;  
-  z-index: 10;
+  z-index: 99;
 }
 
 .paragraph[color="error"] {
