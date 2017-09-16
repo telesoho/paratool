@@ -39,7 +39,8 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;    
+  -webkit-overflow-scrolling: touch;  
+  z-index: 10;  
 }
 
 .right {
@@ -57,6 +58,7 @@ body {
   scroll-behavior: smooth;
   overflow-y: scroll; /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch;  
+  z-index: 10;
 }
 
 .paragraph[color="error"] {
@@ -75,7 +77,7 @@ body {
   background-color: #E7F909;
   margin: 15px 0px 15px 0px;
   /* and that, will result in a 10px gap */
-  z-index: 2;
+  z-index: 9999;
 }
 
 .row {
