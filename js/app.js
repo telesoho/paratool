@@ -1,10 +1,12 @@
 (window.onload = function () {
   var vm = new Vue({
     el: "#app",
-    data() { return {
-      list: [],
-      resultList: [],
-    }},
+    data() {
+      return {
+        list: [],
+        resultList: [],
+      }
+    },
     methods: {
       onChange: function (evt) {
         var maxOrder = -1;
