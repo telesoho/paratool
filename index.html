@@ -16,13 +16,18 @@
 
 <body>
   <div id="app">
-    <context-menu id="leftctxmenu" ref="ctx">
+    <!-- <context-menu id="leftctxmenu" ref="ctx">
       <li class="ctx-item" @click="cleanAll()">Clean All</li>
       <li class="ctx-divider"></li>
       <li class="ctx-item" @click="order()">Order</li>
       <li class="ctx-item" @click="confuse()">Confuse</li>
-    </context-menu>
-    <div class="inputbox" contenteditable='true' v-on:paste="onPaste">将文章粘贴到此...</div>
+    </context-menu> -->
+    <div class="row">
+      <div class="inputbox" contenteditable='true' v-on:paste="onPaste">将文章粘贴到此...</div>
+      <button class="button" v-on:click="cleanAll">清除</button>
+      <button class="button" v-on:click="order">排序</button>
+      <button class="button" v-on:click="confuse">扰乱</button>
+    </div>
     <div class="main unselectable">
       <div class="left" contenteditable='false' @contextmenu.prevent="$refs.ctx.open($event)">
         <div id="background" contenteditable='false'>

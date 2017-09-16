@@ -38,6 +38,7 @@ body {
   padding: 10px;
   /* this */
   overflow-x: hidden;
+  overflow-y:scroll;
 }
 
 .right {
@@ -53,6 +54,7 @@ body {
   padding: 10px;
   /* this */
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .paragraph[color="error"] {
@@ -74,10 +76,33 @@ body {
   z-index: 2;
 }
 
+.row {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.button {
+  width: 100px;
+  margin-left: 20px;
+  z-index: 999;
+}
+
 .inputbox {
-  display: block;
-  left:0px; top:0px; width:100%;
+  left:0px; top:0px; 
+  width:20%;
   color: lightgrey;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  background-color: white;
+  background-color: -moz-field;
+  border: 1px solid darkgray;
+  box-shadow: 1px 1px 1px 0 lightgray inset;  
+  font: -moz-field;
+  font: -webkit-small-control;
+  margin-top: 5px;
+  padding: 2px 3px;   
   z-index: 999;
 }
 
