@@ -1,1 +1,49 @@
-HELLO
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- CDNJS :: Vue (https://cdnjs.com/) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+
+  <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.js"></script>
+
+  <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+  <div id="app">
+    <context-menu id="leftctxmenu" ref="ctx">
+      <li class="ctx-item" @click="cleanAll()">Clean All</li>
+      <li class="ctx-divider"></li>
+      <li class="ctx-item" @click="order()">Order</li>
+      <li class="ctx-item" @click="confuse()">Confuse</li>
+    </context-menu>
+    <div class="main" v-on:paste="onPaste">
+      <div class="left" contenteditable='false' @contextmenu.prevent="$refs.ctx.open($event)">
+        <div id="background">
+          <p id="bg-text">PASTE</p>
+        </div>
+        <draggable style="position:relative" v-model="list" class="dragArea" :options="{group:'people'}">
+          <div class="paragraph" v-for="element in list">{{element.text}}</div>
+        </draggable>
+      </div>
+      <div class="right" id='rightDiv' contenteditable='false'>
+        <div id="background">
+          <p id="bg-text">DROP</p>
+        </div>
+        <draggable style="position:relative" v-model="resultList" class="dragArea" :options="{group:'people'}" @change="onChange">
+          <div class='paragraph' v-bind:color=element.color v-for="element in resultList">{{element.text}}</div>
+        </draggable>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="js/context-menu.js"></script>
+<script src="js/app.js"></script>
+
+</html>
