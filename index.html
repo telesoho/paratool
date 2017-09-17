@@ -5,46 +5,33 @@
   <meta charset="utf-8">
   <!-- CDNJS :: Vue (https://cdnjs.com/) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
-
-  <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.js"></script> -->
-
-  <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js"></script> -->
   <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
 <body>
   <div id="app">
-    <!-- <context-menu id="leftctxmenu" ref="ctx">
-      <li class="ctx-item" @click="cleanAll()">Clean All</li>
-      <li class="ctx-divider"></li>
-      <li class="ctx-item" @click="order()">Order</li>
-      <li class="ctx-item" @click="confuse()">Confuse</li>
-    </context-menu> -->
-    <div class="row">
-      <div class="inputbox" contenteditable='true' v-on:paste="onPaste">将文章粘贴到此...</div>
+    <div class="navbar">
+      <div class="inputbox" contenteditable='true' onclick="document.execCommand('paste',false,null)" v-on:paste="onPaste">把文章粘贴到这里...</div>
       <div class="button" v-on:click="cleanAll">清除</div>
       <div class="button" v-on:click="order">排序</div>
       <div class="button" v-on:click="confuse">扰乱</div>
     </div>
     <div class="main unselectable">
-      <div class="left" contenteditable='false'>
-        <draggable style="position:relative" v-model="list" class="dragArea" 
-        :options="{group:'paragraph', delay: 200, scroll: false,}"
-          @start="onStart1" @end="onEnd1" @add="onAdd1" @remove="onRemove1">
+      <div class="left" >
+        <draggable style="position:relative" ref="pasteArea" v-model="list" class="dragArea" 
+        :options="{group:'paragraph', scroll: true, iscroll:'.left' }">
           <div class="paragraph" v-for="element in list">{{element.text}}</div>
         </draggable>
 
-        <div id="background" contenteditable='false'>
+        <div id="background">
           <p id="bg-text">PASTE</p>
         </div>
       </div>
       <div class="right" id='rightDiv'>
-        <draggable style="position:relative" v-model="resultList" class="dragArea" 
-          :options="{group:'paragraph', delay: 200, scroll: false,}"
-          @start="onStart2" @end="onEnd2" @change="onChange2">
-          <div class='paragraph' v-bind:color=element.color v-for="element in resultList">{{element.text}}</div>
+        <draggable style="position:relative" ref="dropArea" v-model="resultList" class="dragArea" 
+          :options="{group:'paragraph', scroll: true, iscroll:'.right'}"
+          @change="onChange2">
+          <div class='paragraph' :color='element.color'  v-for="element in resultList">{{element.text}}</div>
         </draggable>
         <div id="background">
           <p id="bg-text">DROP</p>
@@ -56,9 +43,7 @@
 
 <script src="js/sortable.js"></script>
 <script src="js/iscroll.js"></script>
-<script src="js/vuedraggable.js"></script>
-<!-- <script src="js/inobounce.js"></script> -->
-<!-- <script src="js/context-menu.js"></script> -->
+<script src="js/scrolldrag.js"></script>
 <script src="js/app.js"></script>
 
 </html>

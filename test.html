@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- CDNJS :: Vue (https://cdnjs.com/) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="navbar">
+      <div class="inputbox" contenteditable='true' v-on:paste="onPaste">将文章粘贴到此...</div>
+      <div class="button" v-on:click="cleanAll">清除</div>
+      <div class="button" v-on:click="order">排序</div>
+      <div class="button" v-on:click="confuse">扰乱</div>
+    </div>
+    <div class="main unselectable">
+      <div class="left" >
+        <draggable style="position:relative" ref="pasteArea" v-model="list" class="dragArea" 
+        :options="{group:'paragraph', scroll: true, iscroll:'.left' }">
+          <div class="paragraph" v-for="element in list">{{element.text}}</div>
+        </draggable>
+
+        <div id="background">
+          <p id="bg-text">PASTE</p>
+        </div>
+      </div>
+      <div class="right" id='rightDiv'>
+        <draggable style="position:relative" ref="dropArea" v-model="resultList" class="dragArea" 
+          :options="{group:'paragraph', scroll: true, iscroll:'.right'}"
+          @change="onChange2">
+          <div class='paragraph' :color='element.color'  v-for="element in resultList">{{element.text}}</div>
+        </draggable>
+        <div id="background">
+          <p id="bg-text">DROP</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="js/sortable.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/scrolldrag.js"></script>
+<script src="js/test.js"></script>
+
+</html>
