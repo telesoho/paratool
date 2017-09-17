@@ -4,6 +4,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  font-size: 1em;
 }
 
 .unselectable {
@@ -18,7 +19,7 @@ body {
 }
 
 .dragArea::after {
-  content: "\A";
+  content: "\A\A";
   white-space: pre;
 }
 
@@ -35,7 +36,7 @@ body {
   height: 94vh;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
-  padding: 1px 1px 15px 15px;
+  padding: 10px 1px 15px 15px;
   overflow-x: hidden;
   scroll-behavior: smooth; 
 }
@@ -47,7 +48,7 @@ body {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
   overflow-x: hidden;
-  padding: 1px 1px 15px 15px;
+  padding: 10px 1px 15px 15px;
   scroll-behavior: smooth;  
 }
 
@@ -57,7 +58,7 @@ body {
 }
 
 .paragraph {
-  padding: 3px 3px 3px 3px;
+  padding: 5px 5px 5px 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   width: 95%;
@@ -67,41 +68,17 @@ body {
   cursor: move;
   background-color: #E7F909;
   margin: 0px 0px 15px 0px;
+  font-size: 1.0em;
 }
 
-.navbar {
-  position: absolute;
-  top:0px;
-  left:0px;
-  width: 100%;
-  height: 32px;
-  vertical-align: middle;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  background-color: #1F8FC4;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-}
-
-.button {
-  width: 100px;
-  height: 25px;
-  border-radius: 3px;
-  margin-top: 2px;
-  margin-left: 20px;
-  text-align: center;
-  z-index: 999;
-  background-color: #E7F909;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-  cursor: pointer;  
-}
 
 .inputbox {
-  margin-left: 5px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  position: absolute;
+  font-size: 1em;
+  top: 10px;
+  right: 10px;
   width:200px;
+  height:28px;
   color: lightgrey;
   -moz-appearance: textfield;
   -webkit-appearance: textfield;
@@ -109,10 +86,7 @@ body {
   background-color: -moz-field;
   border: 1px solid darkgray;
   box-shadow: 1px 1px 1px 0 lightgray inset;  
-  font: -moz-field;
-  font: -webkit-small-control;
-  padding: 2px 3px;   
-  z-index: 999;
+  padding: 2px 3px; 
 }
 
 [draggable] {

@@ -3,43 +3,58 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- CDNJS :: Vue (https://cdnjs.com/) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+  <link rel="stylesheet" type="text/css" href="css/iconfont.css">
   <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
 <body>
   <div id="app">
-    <div class="navbar">
-      <div class="inputbox" contenteditable='true' onclick="document.execCommand('paste',false,null)" v-on:paste="onPaste">把文章粘贴到这里...</div>
-      <div class="button" v-on:click="cleanAll">清除</div>
-      <div class="button" v-on:click="order">排序</div>
-      <div class="button" v-on:click="confuse">扰乱</div>
-    </div>
-    <div class="main unselectable">
-      <div class="left" >
-        <draggable style="position:relative" ref="pasteArea" v-model="list" class="dragArea" 
-        :options="{group:'paragraph', scroll: true, iscroll:'.left' }">
+    <el-row>
+        <el-menu theme="dark" mode="horizontal">
+          <el-menu-item index="1" @click="confuse"><i class="el-icon-my-icon-zuji"></i>扰乱段落</el-menu-item>
+          <el-menu-item index="2" @click="order"><i class="el-icon-my-icon-survey"></i>排序段落</el-menu-item>
+          <el-menu-item index="3" @click="cleanAll"><i class="el-icon-my-icon-refresh"></i>清除段落</el-menu-item>
+          <el-submenu index="3">
+            <template slot="title"><i class="el-icon-my-icon-help"></i>帮助</template>
+            <el-menu-item index="3-1">学习方法</el-menu-item>
+            <el-menu-item index="3-2">关于我</el-menu-item>
+          </el-submenu>
+          <div class="inputbox" contenteditable=true  @paste="onPaste">
+              <span>复制文章并粘贴到此处...</span><i class="el-icon-loading"></i>
+          </div>
+        </el-menu>
+    </el-row>
+    <el-row class="unselectable">
+      <el-col class="left">
+        <draggable style="position:relative" ref="pasteArea" v-model="list" class="dragArea" :options="{group:'paragraph', scroll: true, iscroll:'.left' }">
           <div class="paragraph" v-for="element in list">{{element.text}}</div>
         </draggable>
 
         <div id="background">
           <p id="bg-text">PASTE</p>
         </div>
-      </div>
-      <div class="right" id='rightDiv'>
-        <draggable style="position:relative" ref="dropArea" v-model="resultList" class="dragArea" 
-          :options="{group:'paragraph', scroll: true, iscroll:'.right'}"
+      </el-col>
+      <el-col class="right" id='rightDiv'>
+        <draggable style="position:relative" ref="dropArea" v-model="resultList" class="dragArea" :options="{group:'paragraph', scroll: true, iscroll:'.right'}"
           @change="onChange2">
-          <div class='paragraph' :color='element.color'  v-for="element in resultList">{{element.text}}</div>
+          <div class='paragraph' :color='element.color' v-for="element in resultList">{{element.text}}</div>
         </draggable>
         <div id="background">
           <p id="bg-text">DROP</p>
         </div>
-      </div>
-    </div>
+      </el-col>
+  </div>
   </div>
 </body>
+
+
+<!-- CDNJS :: Vue (https://cdnjs.com/) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
 <script src="js/sortable.js"></script>
 <script src="js/iscroll.js"></script>
