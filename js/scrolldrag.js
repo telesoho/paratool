@@ -194,7 +194,7 @@ function _toConsumableArray(arr) {
                     ('delay' in options) && (options.delay = 0);
                     disablePointer = true;
                 } else {
-                    !('delay' in options) && (options.delay = 200);
+                    !('delay' in options) && (options.delay = 100);
                     disablePointer = false;
                 }
 
@@ -202,7 +202,7 @@ function _toConsumableArray(arr) {
                     this._iscroll = new IScroll(options.iscroll, {
                         mouseWheel: true,
                         disablePointer: disablePointer,
-                        useTransform: false,
+                        useTransform: false, // 使用Transform会导致拖拽BUG 
                         bounce: true,
                         useTransition: false,
                     });

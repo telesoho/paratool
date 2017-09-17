@@ -3,29 +3,30 @@
 
 <head>
   <meta charset="utf-8">
-
+  <title>爬来兔-富兰克林学习法</title>
   <!-- 引入样式 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
-  <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="css/icon/iconfont.css">
   <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
 <body>
   <div id="app">
+
     <el-row>
-        <el-menu theme="dark" mode="horizontal">
-          <el-menu-item index="1" @click="confuse"><i class="el-icon-my-icon-zuji"></i>扰乱段落</el-menu-item>
-          <el-menu-item index="2" @click="order"><i class="el-icon-my-icon-survey"></i>排序段落</el-menu-item>
-          <el-menu-item index="3" @click="cleanAll"><i class="el-icon-my-icon-refresh"></i>清除段落</el-menu-item>
-          <el-submenu index="3">
-            <template slot="title"><i class="el-icon-my-icon-help"></i>帮助</template>
-            <el-menu-item index="3-1">学习方法</el-menu-item>
-            <el-menu-item index="3-2">关于我</el-menu-item>
-          </el-submenu>
-          <div class="inputbox" contenteditable=true  @paste="onPaste">
-              <span>复制文章并粘贴到此处...</span><i class="el-icon-loading"></i>
-          </div>
-        </el-menu>
+      <el-menu theme="dark" mode="horizontal">
+        <el-menu-item index="1" @click="confuse"><i style="font-size:1.5em;" class="el-icon-my-icon-suijibofangwenzhang"></i>扰乱段落</el-menu-item>
+        <el-menu-item index="2" @click="order"><i class="el-icon-my-icon-shunxupailie"></i>排序段落</el-menu-item>
+        <el-menu-item index="3" @click="reset"><i class="el-icon-my-icon-shunxulianxi"></i>重置段落</el-menu-item>
+        <el-submenu index="3">
+          <template slot="title"><i class="el-icon-my-icon-xuexililun"></i>帮助说明</template>
+          <el-menu-item index="3-1" @click="helpDialogVisible=true"><i class="el-icon-my-icon-write"></i>关于爬来兔</el-menu-item>
+          <el-menu-item index="3-2" @click="AboutDialogVisible=true"><i class="el-icon-my-icon-wo"></i>关于作者</el-menu-item>
+        </el-submenu>
+        <div class="inputbox" contenteditable=true @paste="onPaste">
+          <i style="font-size:1.2em;" class="el-icon-my-icon-changan"></i><span>长按此处,选择粘贴</span>
+        </div>
+      </el-menu>
     </el-row>
     <el-row class="unselectable">
       <el-col class="left">
@@ -46,7 +47,52 @@
           <p id="bg-text">DROP</p>
         </div>
       </el-col>
-  </div>
+      <el-dialog title="爬来兔帮助说明" :visible.sync="helpDialogVisible">
+        <el-collapse accordion>
+          <el-collapse-item title="富兰克林学习法" name="1">
+            <p>
+              本杰明富兰克林（Benjamin Franklin，1706~1790）尊称为“美国的圣人”、“美国革命之父”。 富兰克林是18世纪美国启蒙运动的开创者，实业家、科学家、作家、政治家、外交家。
+            </p>
+            <p>
+              富兰克林没进行过正规教育，但他在印刷厂做学徒时意识到，一篇好文章的关键在于组织结构， 他找到了一种方法锻炼这方面的能力。 他把优秀的文章中的段落打乱，然后他忘掉那篇文章，尝试把这些段落按照正确顺序排列下来， 然后和原文对照。
+            </p>
+            <div>爬来兔就是针对富兰克林这种学习方法而开发的。</div>
+          </el-collapse-item>
+          <el-collapse-item title="爬来兔使用步骤" name="2">
+            <el-steps :space="120" :active="3">
+              <el-step title="步骤 1" description="拷贝一篇你认为优秀的文章"></el-step>
+              <el-step title="步骤 2" description="将文章粘贴到右上角的输入框中"></el-step>
+              <el-step title="步骤 3" description="将左边被随机打乱的文章段落拖动到右边区域重新排列"></el-step>
+            </el-steps>
+          </el-collapse-item>
+          <el-collapse-item title="爬来兔功能说明" name="3">
+            <div><b>文章输入</b>：长按右上角的输入框，并选择粘贴，将剪切板中的文章粘贴到左边区域；</div>
+            <div><b>扰乱段落</b>：将左边的文章段落用随机的顺序重新打乱；</div>
+            <div><b>排序段落</b>：将左边的文章段落按原文的顺序排序；</div>
+            <div><b>重置段落</b>：将已经拖拽到右边的文章段落全部移动回左边区域；</div>
+            <div><b>错误提示</b>：当右边的区域的文章段落顺序不正确时，错误的段落会以红色背景显示，拖动错误到正确的位置后，背景色会恢复为黄色 ；</div>
+          </el-collapse-item>
+          <el-collapse-item title="问题反馈" name="4">
+            <div>如果你有什么好的建议或意见，或者发现了错误，请到下列网址去留言:</div>
+            <div><a href="https://github.com/telesoho/paratool/issues">https://github.com/telesoho/paratool/issues</a></div>
+          </el-collapse-item>
+        </el-collapse>
+        <div slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="helpDialogVisible=false">关闭</el-button>
+        </div>
+      </el-dialog>
+      <el-dialog title="关于作者" :visible.sync="AboutDialogVisible">
+        <el-card :body-style="{ padding: '0px' }">
+          <img src="img/ME.JPG" class="image">
+          <div style="padding: 14px;">
+            <span>好吃哦！</span>
+            <div class="bottom clearfix">
+              <time class="time">2017-09-18 02:34</time>
+              <el-button type="text" class="button" @click="AboutDialogVisible=false">关闭</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-dialog>
   </div>
 </body>
 

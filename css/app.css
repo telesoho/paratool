@@ -87,6 +87,7 @@ body {
   border: 1px solid darkgray;
   box-shadow: 1px 1px 1px 0 lightgray inset;  
   padding: 2px 3px; 
+  text-align: center;
 }
 
 [draggable] {
@@ -120,6 +121,36 @@ body {
   transform: rotate(300deg);
 }
 
+/* About ME */
+.time {
+  font-size: 13px;
+  color: #999;
+}
+
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
+}
+
+.button {
+  padding: 0;
+  float: right;
+}
+
+.image {
+  width: 100%;
+  display: block;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both
+}
 
 /* Context Menu */
 

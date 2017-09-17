@@ -4,6 +4,8 @@
     data: {
       list: [],
       resultList: [],
+      helpDialogVisible: false,
+      AboutDialogVisible: false,
     },
     methods: {
       onChange2(evt) {
@@ -12,9 +14,11 @@
           if (this.resultList[i].order < maxOrder) {
             // Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。
             // 然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：
-            Vue.set(this.resultList[i], 'color', "error");
+            // Vue.set(this.resultList[i], 'color', "error");
+            this.resultList[i].color = "error";
           } else {
-            Vue.set(this.resultList[i], 'color', "correct");
+            this.resultList[i].color = "correct";
+            // Vue.set(this.resultList[i], 'color', "correct");
             maxOrder = this.resultList[i].order;
           }
         }
@@ -23,16 +27,28 @@
         vm.list.sort(function (a, b) {
           return Math.floor(Math.random() * 100) - 50;
         });
+        this.$message({
+          message: '左边区域的段落已经被扰乱',
+          type: 'success'
+        });        
       },
-      cleanAll() {
-        vm.list = [];
-        vm.resultList = [];
+      reset() {
+        this.list = this.list.concat(this.resultList);
+        this.resultList = [];
+        this.$message({
+          message: '段落已经重置到左边的区域',
+          type: 'success'
+        });
       },
       order() {
         // sort by order
         vm.list.sort(function (a, b) {
           return a.order - b.order;
         });
+        this.$message({
+          message: '左边区域的段落已经按正确的顺序排序',
+          type: 'success'
+        }); 
       },
       onPaste(e) {
         var clipboardData, pastedData;
@@ -50,6 +66,7 @@
           if (item.trim() != "") {
             vm.list.push({
               order: index,
+              color: "correct",
               text: item
             });
           }
