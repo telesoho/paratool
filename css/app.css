@@ -7,6 +7,10 @@ body {
   font-size: 1em;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .unselectable {
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
