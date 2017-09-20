@@ -5,6 +5,9 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1em;
+  -ms-text-size-adjust : 100%;
+  -moz-text-size-adjust :100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 [v-cloak] {
