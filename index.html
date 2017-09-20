@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>爬来兔-富兰克林学习法</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0.6,maximum-scale=1.0,user-scalable=no">
 
   <!-- 引入样式 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
@@ -22,7 +22,7 @@
             <span slot="title">段落</span>
           </template>
           <el-menu-item index="1-1" @click="confuse">
-            <i style="font-size:1.5em;" class="el-icon-my-icon-suijibofangwenzhang"></i>
+            <i class="el-icon-my-icon-suijibofangwenzhang"></i>
             <span slot="title">扰乱段落</span>
           </el-menu-item>
           <el-menu-item index="1-2" @click="order">
@@ -48,9 +48,9 @@
             <span slot="title">关于作者</span>
           </el-menu-item>
         </el-submenu>
-        <div class="inputbox" contenteditable=true @paste="onPaste">
-          <i style="font-size:1.2em;" class="el-icon-my-icon-changan"></i>
-          <span>长按此处,选择粘贴</span>
+        <div class="inputbox" contenteditable="true" @paste="onPaste">
+          <i class="el-icon-my-icon-changan"></i>
+          <span>长按粘贴</span>
         </div>
       </el-menu>
     </el-row>
@@ -60,8 +60,8 @@
           <div class="paragraph" v-for="element in list">{{element.text}}</div>
         </draggable>
 
-        <div id="background">
-          <p id="bg-text">PASTE</p>
+        <div class="background">
+          <p class="bg-text">PASTE</p>
         </div>
       </el-col>
       <el-col class="right" id='rightDiv'>
@@ -69,11 +69,11 @@
           @change="onChange2">
           <div class='paragraph' :color='element.color' v-for="element in resultList">{{element.text}}</div>
         </draggable>
-        <div id="background">
-          <p id="bg-text">DROP</p>
+        <div class="background">
+          <p class="bg-text">DROP</p>
         </div>
       </el-col>
-      <el-dialog title="爬来兔帮助说明" :visible.sync="helpDialogVisible">
+      <el-dialog title="爬来兔帮助说明" custom-class="helpdlg" :visible.sync="helpDialogVisible">
         <el-collapse accordion>
           <el-collapse-item title="富兰克林学习法" name="1">
             <p>
@@ -107,7 +107,7 @@
           <el-button type="primary" @click="helpDialogVisible=false">关闭</el-button>
         </div>
       </el-dialog>
-      <el-dialog title="关于作者" :visible.sync="AboutDialogVisible">
+      <el-dialog title="关于作者" custom-class="aboutdlg" :visible.sync="AboutDialogVisible">
         <el-card :body-style="{ padding: '0px' }">
           <img src="img/ME.JPG" class="image">
           <div style="padding: 14px;">

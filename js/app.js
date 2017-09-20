@@ -74,7 +74,6 @@
         this.list.sort(function (a, b) {
           return Math.floor(Math.random() * 100) - 50;
         });
-
       }
     }
   });
