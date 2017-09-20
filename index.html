@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>爬来兔-富兰克林学习法</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
   <!-- 引入样式 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
   <link rel="stylesheet" type="text/css" href="css/icon/iconfont.css">
@@ -11,24 +13,48 @@
 </head>
 
 <body>
-  <div id="app" v-cloak>
-
+  <div id="app" v-cloak class="unselectable">
     <el-row>
-      <el-menu theme="dark" mode="horizontal">
-        <el-menu-item index="1" @click="confuse"><i style="font-size:1.5em;" class="el-icon-my-icon-suijibofangwenzhang"></i>扰乱段落</el-menu-item>
-        <el-menu-item index="2" @click="order"><i class="el-icon-my-icon-shunxupailie"></i>排序段落</el-menu-item>
-        <el-menu-item index="3" @click="reset"><i class="el-icon-my-icon-shunxulianxi"></i>重置段落</el-menu-item>
-        <el-submenu index="3">
-          <template slot="title"><i class="el-icon-my-icon-xuexililun"></i>帮助说明</template>
-          <el-menu-item index="3-1" @click="helpDialogVisible=true"><i class="el-icon-my-icon-write"></i>关于爬来兔</el-menu-item>
-          <el-menu-item index="3-2" @click="AboutDialogVisible=true"><i class="el-icon-my-icon-wo"></i>关于作者</el-menu-item>
+      <el-menu theme="dark" mode="horizontal" >
+        <el-submenu index="1">
+          <template slot="title">
+            <i class="el-icon-my-icon-shunxulianxi"></i>
+            <span slot="title">段落</span>
+          </template>
+          <el-menu-item index="1-1" @click="confuse">
+            <i style="font-size:1.5em;" class="el-icon-my-icon-suijibofangwenzhang"></i>
+            <span slot="title">扰乱段落</span>
+          </el-menu-item>
+          <el-menu-item index="1-2" @click="order">
+            <i class="el-icon-my-icon-shunxupailie"></i>
+            <span slot="title">排序段落</span>
+          </el-menu-item>
+          <el-menu-item index="1-3" @click="reset">
+            <i class="el-icon-my-icon-shunxulianxi"></i>
+            <span slot="title">重置段落</span>
+          </el-menu-item>
+        </el-submenu>
+      <el-submenu index="2">
+          <template slot="title">
+            <i class="el-icon-my-icon-xuexililun"></i>
+            <span slot="title">帮助</span>
+          </template>
+          <el-menu-item index="2-1" @click="helpDialogVisible=true">
+            <i class="el-icon-my-icon-write"></i>
+            <span slot="title">关于爬来兔</span>
+          </el-menu-item>
+          <el-menu-item index="2-2" @click="AboutDialogVisible=true">
+            <i class="el-icon-my-icon-wo"></i>
+            <span slot="title">关于作者</span>
+          </el-menu-item>
         </el-submenu>
         <div class="inputbox" contenteditable=true @paste="onPaste">
-          <i style="font-size:1.2em;" class="el-icon-my-icon-changan"></i><span>长按此处,选择粘贴</span>
+          <i style="font-size:1.2em;" class="el-icon-my-icon-changan"></i>
+          <span>长按此处,选择粘贴</span>
         </div>
       </el-menu>
     </el-row>
-    <el-row class="unselectable">
+    <el-row >
       <el-col class="left">
         <draggable style="position:relative" ref="pasteArea" v-model="list" class="dragArea" :options="{group:'paragraph', scroll: true, iscroll:'.left' }">
           <div class="paragraph" v-for="element in list">{{element.text}}</div>
