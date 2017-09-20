@@ -21,6 +21,7 @@ body {
   user-select: none;          /* Likely future */       
 }
 
+
 .dragArea {
   min-height: 90%;
 }
@@ -94,6 +95,11 @@ body {
   box-shadow: 1px 1px 1px 0 lightgray inset;  
   padding: 2px 3px; 
   text-align: center;
+  -webkit-user-select: text;  /* Chrome all / Safari all */
+  -moz-user-select: text;     /* Firefox all */
+  -ms-user-select: text;      /* IE 10+ */
+  user-select: text;          /* Likely future */  
+  overflow: hidden;
 }
 
 [draggable] {
