@@ -84,8 +84,8 @@
             </p>
             <div>爬来兔就是针对富兰克林这种学习方法而开发的。</div>
           </el-collapse-item>
-          <el-collapse-item title="爬来兔使用步骤" name="2">
-            <el-steps :space="120" :active="3">
+          <el-collapse-item title="爬来兔使用步骤" name="2" style="overflow:scroll">
+            <el-steps :space="75" :active="3">
               <el-step title="步骤 1" description="拷贝一篇你认为优秀的文章"></el-step>
               <el-step title="步骤 2" description="将文章粘贴到右上角的输入框中"></el-step>
               <el-step title="步骤 3" description="将左边被随机打乱的文章段落拖动到右边区域重新排列"></el-step>
@@ -130,7 +130,7 @@
 
 <script src="js/sortable.js"></script>
 <script src="js/iscroll.js"></script>
-<script src="js/scrolldrag.js"></script>
+<script src="js/dragiscroll.js"></script>
 <script src="js/app.js"></script>
 
 </html>

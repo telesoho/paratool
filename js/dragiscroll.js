@@ -1,47 +1,45 @@
-'use strict';
-var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
-        for (var key in source) {
-            if (Object.prototype.hasOwnProperty.call(source, key)) {
-                target[key] = source[key];
+(function () {
+    'use strict';
+    var _extends = Object.assign || function (target) {
+        for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) {
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
             }
         }
-    }
-    return target;
-};
-
-var isMobile = {
-    Windows: function () {
-        return /IEMobile/i.test(navigator.userAgent);
-    },
-    Android: function () {
-        return /Android/i.test(navigator.userAgent);
-    },
-    BlackBerry: function () {
-        return /BlackBerry/i.test(navigator.userAgent);
-    },
-    iOS: function () {
-        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    },
-    any: function () {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
-    }
-};
-
-function _toConsumableArray(arr) {
-    if (Array.isArray(arr)) {
-        for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-            arr2[i] = arr[i];
+        return target;
+    };
+    
+    var isMobile = {
+        Windows: function () {
+            return /IEMobile/i.test(navigator.userAgent);
+        },
+        Android: function () {
+            return /Android/i.test(navigator.userAgent);
+        },
+        BlackBerry: function () {
+            return /BlackBerry/i.test(navigator.userAgent);
+        },
+        iOS: function () {
+            return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
         }
-        return arr2;
-    } else {
-        return Array.from(arr);
+    };
+    
+    function _toConsumableArray(arr) {
+        if (Array.isArray(arr)) {
+            for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+                arr2[i] = arr[i];
+            }
+            return arr2;
+        } else {
+            return Array.from(arr);
+        }
     }
-}
-
-(function () {
-    "use strict";
 
     if (!Array.from) {
         Array.from = function (object) {
@@ -49,7 +47,7 @@ function _toConsumableArray(arr) {
         };
     }
 
-    function buildDraggable(Sortable) {
+    function buildDragiscroll(Sortable) {
         function removeNode(node) {
             node.parentElement.removeChild(node);
         }
@@ -460,13 +458,13 @@ function _toConsumableArray(arr) {
 
     if (typeof exports == "object") {
         var Sortable = require("sortablejs");
-        module.exports = buildDraggable(Sortable);
+        module.exports = buildDragiscroll(Sortable);
     } else if (typeof define == "function" && define.amd) {
-        define(['sortablejs'], function (Sortable) {
-            return buildDraggable(Sortable);
+        define(['sortablejs'], function (Sortable, IScroll) {
+            return buildDragiscroll(Sortable);
         });
     } else if (window && window.Vue && window.Sortable) {
-        var draggable = buildDraggable(window.Sortable);
+        var draggable = buildDragiscroll(window.Sortable);
         Vue.component('draggable', draggable);
     }
 })();
